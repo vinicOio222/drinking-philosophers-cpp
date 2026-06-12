@@ -1,13 +1,15 @@
-# include "graph.hpp"
+#include "graph.hpp"
+#include "../common/logger.hpp"
 
-# include <fstream>
-# include <iostream>
-# include <sstream>
-# include <stdexcept>
+#include <fstream>
+#include <iostream>
+#include <sstream>
+#include <stdexcept>
 
 Graph::Graph(const std::string& filename){
     loadFromFile(filename);
 }
+
 
 void Graph::loadFromFile(const std::string& filename) {
     adjacencyMatrix.clear();
@@ -85,13 +87,17 @@ bool Graph::hasEdge(int u, int v) const {
 }
 
 void Graph::print() const {
-    std::cout << "Adjacency Matrix:" << std::endl;
+    Logger::write(toString());
+}
 
+std::string Graph::toString() const {
+    std::string out = "Adjacency Matrix:\n";
     for (const auto& row : adjacencyMatrix) {
         for (int value : row) {
-            std::cout << value << " ";
+            out += std::to_string(value) + " ";
         }
-        std::cout << std::endl;
+        out += "\n";
     }
-    std::cout << "Number of vertices: " << size() << std::endl;
+    out += "Number of vertices: " + std::to_string(size()) + "\n";
+    return out;
 }
