@@ -101,3 +101,4 @@ Requires CMake and a C++17-compatible compiler. Output is printed to the console
 
 ## Author
 - [**Vinícius dos Santos**](https://github.com/vinicOio222)
+- [**Lucas Monteiro Amaral**](https://github.com/Lucas-M-Amaral)
